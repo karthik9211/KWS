@@ -12,7 +12,7 @@ Open `index.html` in Chrome, Edge, or Safari. All local images and website code 
 
 ## Important limitations
 - This is a functional front-end preview, **not a live deployed site**.
-- The approved screenshot is used as the hero and invitation artwork to preserve the exact visual direction. It is a raster image, not separately editable temple architecture. The hero's embedded couple names are part of the image. The original screenshot's wrong date is excluded from the page; the event details below use **December 19, 2026**.
+- The hero uses the temple artwork in `assets/temple.webp`; its responsive scroll animation starts with a blue sky and flying birds, then zooms toward the entrance and reveals the couple's names. The navigation overlays the sky without the old image text. The invitation artwork remains a raster image. The original screenshot's wrong date is excluded from the page; the event details below use **December 19, 2026**.
 - The RSVP form currently saves data only to the visitor's browser localStorage. **It does not send responses to the couple.** Connect a form endpoint or backend (e.g. Formspree, Google Apps Script, Netlify Forms on Netlify) before sending invitations. GitHub Pages does not itself process form submissions.
 - Hotel buttons link to live hotel search results rather than claiming specific hotel availability.
 - Desktop and mobile CSS breakpoints are included, but full device/browser QA is still required.
