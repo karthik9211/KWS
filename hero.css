@@ -1,25 +1,52 @@
 .nav {
   justify-content: flex-end;
-  background: linear-gradient(#171b23d9, #171b2366);
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  color: #6d2935;
+}
+
+.nav.scrolled {
+  background: transparent;
+  color: #6d2935;
+  backdrop-filter: none;
+}
+
+.nav .menu {
+  color: #6d2935;
+}
+
+.nav.scrolled .menu {
+  color: #6d2935;
 }
 
 .links {
-  flex: 1;
-  justify-content: space-between;
-  margin-left: clamp(24px, 6vw, 90px);
+  flex: 0 1 auto;
+  justify-content: flex-end;
+  gap: clamp(20px, 2.5vw, 36px);
+  margin-left: auto;
 }
 
 .links a {
   font-size: clamp(12px, 1vw, 15px);
-  text-shadow: 0 1px 8px #1118;
+  text-shadow: none;
+}
+
+.links.open a {
+  color: #6d2935;
+  text-shadow: 0 1px 5px rgb(255 250 238 / 90%);
 }
 
 .hero {
-  height: 180vh;
-  height: 180svh;
+  height: 185vh;
+  height: 185svh;
   min-height: 0;
   overflow: visible;
-  background: #4e93d3;
+  background: #f5eddf;
+}
+
+.hero::after {
+  content: none;
 }
 
 .hero-stage {
@@ -29,111 +56,231 @@
   height: 100svh;
   overflow: hidden;
   isolation: isolate;
-  background: #4389ce;
-  --hero-scale: 1;
-  --sky-opacity: 1;
-  --title-opacity: 0;
-  --title-offset: 32px;
-  --birds-opacity: 1;
+  background:
+    radial-gradient(ellipse at 50% 48%, rgb(255 255 255 / 78%) 0 22%, transparent 68%),
+    radial-gradient(ellipse at 8% 20%, rgb(228 197 157 / 34%), transparent 40%),
+    radial-gradient(ellipse at 94% 82%, rgb(221 192 157 / 30%), transparent 42%),
+    linear-gradient(180deg, #f6eee1 0%, #f3e7d5 100%);
+  --hero-progress: 0;
+  --art-y: 0px;
+  --art-scale: 1;
+  --title-opacity: 1;
+  --title-y: 0px;
 }
 
-.hero-image {
+.hero-artwork {
   position: absolute;
-  z-index: -2;
   inset: 0;
-  animation: none;
-  background-image: url('assets/temple.webp');
-  background-size: cover;
-  background-position: center 32%;
-  background-repeat: no-repeat;
-  transform: scale(var(--hero-scale));
-  transform-origin: center 78%;
+  pointer-events: none;
+  animation: artworkSway 18s ease-in-out infinite alternate;
+}
+
+.hero-artwork img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 102%;
+  max-width: none;
+  height: 102%;
+  object-fit: cover;
+  object-position: center 42%;
+  opacity: 0;
+  transform: translate3d(-50%, calc(-50% + var(--art-y)), 0) scale(var(--art-scale));
+  transform-origin: center;
+  animation: invitationReveal 1.2s ease-out 0.15s forwards;
   will-change: transform;
 }
 
-.sky-overlay {
+.hero-petals {
   position: absolute;
-  z-index: -1;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgb(67 137 206 / 74%) 0%,
-    rgb(67 137 206 / 64%) 24%,
-    rgb(67 137 206 / 40%) 43%,
-    rgb(67 137 206 / 12%) 58%,
-    transparent 68%
-  );
-  opacity: var(--sky-opacity);
+  z-index: 2;
+  overflow: hidden;
   pointer-events: none;
 }
 
-.birds {
+.hero-petals span {
   position: absolute;
-  top: 20%;
-  left: 8%;
-  width: clamp(110px, 15vw, 190px);
-  overflow: visible;
-  fill: none;
-  stroke: #fff;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 3.5;
-  opacity: var(--birds-opacity);
-  animation: birdsFly 19s linear infinite;
+  top: -7%;
+  left: var(--petal-left);
+  width: var(--petal-size);
+  height: calc(var(--petal-size) * 0.68);
+  border-radius: 80% 10% 80% 10%;
+  background: linear-gradient(145deg, #f6b3b2e8, #c85e77db);
+  box-shadow: 0 2px 5px rgb(105 45 47 / 13%);
+  opacity: 0;
+  animation: petalFall var(--petal-duration) linear var(--petal-delay) infinite;
+}
+
+.hero-petals span:nth-child(1) {
+  --petal-left: 14%;
+  --petal-size: 13px;
+  --petal-duration: 11s;
+  --petal-delay: -3s;
+}
+
+.hero-petals span:nth-child(2) {
+  --petal-left: 31%;
+  --petal-size: 9px;
+  --petal-duration: 13s;
+  --petal-delay: -9s;
+}
+
+.hero-petals span:nth-child(3) {
+  --petal-left: 57%;
+  --petal-size: 12px;
+  --petal-duration: 12s;
+  --petal-delay: -6s;
+}
+
+.hero-petals span:nth-child(4) {
+  --petal-left: 76%;
+  --petal-size: 8px;
+  --petal-duration: 14s;
+  --petal-delay: -11s;
+}
+
+.hero-petals span:nth-child(5) {
+  --petal-left: 88%;
+  --petal-size: 11px;
+  --petal-duration: 12s;
+  --petal-delay: -1s;
+}
+
+.hero-prayer {
+  position: absolute;
+  top: 26.5%;
+  left: 50%;
+  width: min(82vw, 640px);
+  color: #79523c;
+  text-align: center;
+  transform: translateX(-50%);
   pointer-events: none;
 }
 
-.birds-two {
-  top: 31%;
-  width: clamp(85px, 12vw, 150px);
-  animation-delay: -9s;
-  animation-duration: 24s;
+.hero-invocation {
+  margin: 0 0 8px;
+  color: #762838;
+  font: 600 clamp(9px, 1vw, 12px)/1.3 'DM Sans', sans-serif;
+  letter-spacing: clamp(1px, 0.2vw, 2px);
+}
+
+.hero-shloka {
+  margin: 0;
+  font: 500 clamp(9px, 1.05vw, 12px)/1.42 'Cormorant Garamond', serif;
+  text-shadow: 0 1px 0 rgb(255 250 238 / 92%);
 }
 
 .hero-title {
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 50%;
-  width: min(660px, 88vw);
-  color: #f4d78f;
+  width: min(580px, 88vw);
+  color: #762838;
   opacity: var(--title-opacity);
   text-align: center;
-  text-shadow: 0 2px 12px #160c06;
-  transform: translate(-50%, var(--title-offset));
+  text-shadow: 0 1px 0 rgb(255 250 238 / 86%);
+  transform: translate3d(-50%, calc(-50% + var(--title-y)), 0);
   pointer-events: none;
 }
 
-.hero-title h1,
-.hero-title h2 {
-  margin: 0;
-  font: 600 clamp(48px, 7vw, 88px)/0.96 'Cormorant Garamond', serif;
+.hero-blessing {
+  margin: 0 0 clamp(8px, 1.4vh, 15px);
+  color: #79523c;
+  font: 600 clamp(10px, 1.1vw, 13px) 'DM Sans', sans-serif;
+  letter-spacing: clamp(1.5px, 0.25vw, 3px);
 }
 
-.hero-title p {
-  margin: 10px 0;
-  color: #fff1d0;
-  font: 600 clamp(14px, 1.5vw, 19px) 'Cormorant Garamond', serif;
-  letter-spacing: 5px;
+.hero-title h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  font: 500 clamp(39px, 6.2vw, 70px)/0.88 'Cormorant Garamond', serif;
+}
+
+.hero-title h1 span {
+  margin: 7px 0;
+  color: #b3874f;
+  font: 500 clamp(17px, 2.2vw, 25px)/1 'Cormorant Garamond', serif;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.hero-date {
+  margin: clamp(10px, 1.5vh, 16px) 0 0;
+  color: #79523c;
+  font: 500 clamp(13px, 1.5vw, 17px) 'Cormorant Garamond', serif;
+  letter-spacing: 1px;
 }
 
 .scroll-down {
-  bottom: 26px;
-  width: 54px;
-  height: 54px;
+  bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+  width: 48px;
+  height: 48px;
   padding: 0;
-  background: #171b23dc;
+  border-color: #9b7652;
+  background: rgb(255 249 239 / 86%);
+  box-shadow: 0 4px 18px rgb(83 54 31 / 12%);
+  color: #762838;
   font-family: inherit;
   cursor: pointer;
-  animation: none;
+  animation: invitationNudge 2.2s ease-in-out infinite;
 }
 
-@keyframes birdsFly {
+.event-muhurtam img {
+  display: block;
+  width: min(100%, 240px);
+  height: auto;
+  margin: 18px auto 0;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgb(83 54 31 / 15%);
+}
+
+.hotel-grid {
+  grid-template-columns: minmax(0, 560px);
+  justify-content: center;
+}
+
+@keyframes invitationReveal {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes artworkSway {
   from {
-    transform: translateX(-24vw);
+    transform: translate3d(-0.35%, 0, 0) scale(1);
   }
 
   to {
-    transform: translateX(125vw);
+    transform: translate3d(0.35%, -0.35%, 0) scale(1.025);
+  }
+}
+
+@keyframes petalFall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -4vh, 0) rotate(0deg);
+  }
+
+  12% {
+    opacity: 0.75;
+  }
+
+  80% {
+    opacity: 0.65;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(8vw, 108vh, 0) rotate(330deg);
+  }
+}
+
+@keyframes invitationNudge {
+  50% {
+    transform: translate(-50%, 5px);
   }
 }
 
@@ -146,42 +293,49 @@
     margin-left: 0;
   }
 
+  .links.open {
+    background: transparent;
+    backdrop-filter: none;
+  }
+
   .hero {
-    height: 180vh;
-    height: 180svh;
-  }
-
-  .hero-image {
-    background-size: cover;
-    background-position: center top;
-    transform-origin: center 80%;
-  }
-
-  .sky-overlay {
-    background: linear-gradient(
-      to bottom,
-      rgb(67 137 206 / 70%) 0%,
-      rgb(67 137 206 / 58%) 25%,
-      rgb(67 137 206 / 32%) 43%,
-      rgb(67 137 206 / 10%) 58%,
-      transparent 68%
-    );
+    height: 185vh;
+    height: 185svh;
   }
 
   .hero-title {
-    top: 58%;
-    width: 92vw;
+    width: 90vw;
   }
 
-  .hero-title h1,
-  .hero-title h2 {
-    font-size: clamp(40px, 10vw, 60px);
+  .hero-prayer {
+    top: 28.5%;
+    width: 84vw;
+  }
+
+  .hero-invocation {
+    margin-bottom: 6px;
+    font-size: 9px;
+  }
+
+  .hero-shloka {
+    font-size: 10px;
+    line-height: 1.35;
+  }
+
+  .hero-title h1 {
+    font-size: clamp(38px, 10vw, 52px);
+  }
+
+  .hero-blessing {
+    max-width: 85%;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 10px;
   }
 
   .scroll-down {
-    bottom: 20px;
-    width: 54px;
-    height: 54px;
+    width: 48px;
+    height: 48px;
   }
 }
 
@@ -195,20 +349,23 @@
     position: relative;
   }
 
-  .hero-image {
-    transform: none;
+  .hero-artwork img {
+    opacity: 1;
+    animation: none;
+    transform: translate(-50%, -50%);
   }
 
-  .sky-overlay {
-    opacity: 0;
+  .hero-artwork,
+  .hero-petals span {
+    animation: none;
   }
 
   .hero-title {
     opacity: 1;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, -50%);
   }
 
-  .birds {
+  .scroll-down {
     animation: none;
   }
 }
