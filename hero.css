@@ -1,3 +1,60 @@
+.landing-screen {
+  position: fixed;
+  z-index: 200;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #f4e8d3;
+  transition: opacity 650ms ease;
+}
+
+.landing-screen::before {
+  position: absolute;
+  inset: -24px;
+  background: url('assets/temple-entrance.webp') center / cover;
+  content: '';
+  filter: blur(18px);
+  opacity: 0.7;
+  transform: scale(1.06);
+}
+
+.landing-screen[hidden] {
+  display: none;
+}
+
+body.landing-active {
+  overflow: hidden;
+}
+
+.landing-screen.is-opening {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.landing-open {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.landing-open img {
+  display: block;
+  width: auto;
+  height: 100vh;
+  height: 100svh;
+  max-width: 100vw;
+}
+
 .nav {
   justify-content: flex-end;
   background: transparent;
@@ -149,7 +206,7 @@
 
 .hero-prayer {
   position: absolute;
-  top: 26.5%;
+  top: 15%;
   left: 50%;
   width: min(82vw, 640px);
   color: #79523c;
@@ -308,7 +365,7 @@
   }
 
   .hero-prayer {
-    top: 28.5%;
+    top: 15%;
     width: 84vw;
   }
 
@@ -340,6 +397,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .landing-screen {
+    transition: none;
+  }
+
   .hero {
     height: 100vh;
     height: 100svh;
