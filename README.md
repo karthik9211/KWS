@@ -12,6 +12,6 @@ Open `index.html` in Chrome, Edge, or Safari. All local images and website code 
 
 ## Important limitations
 - This is a functional front-end preview, **not a live deployed site**.
-- The opening page uses the watercolor invitation in `assets/approved-blank.webp`, with the Lakshmi Venkateswara invocation, marriage shloka, couple's names, family blessing, and date. It retains gentle artwork motion and falling flower petals; the mobile navigation remains transparent. The ceremony illustration in `assets/muhurtam.webp` appears in the Muhurtam timeline event. The event date is **December 19, 2026**.
+- The first landing screen uses the decorated temple entrance in `assets/temple-entrance.webp`; tap it to open the invitation, which uses the watercolor artwork in `assets/approved-blank.webp` with the Lakshmi Venkateswara invocation and marriage shloka. It retains gentle artwork motion and falling flower petals; the mobile navigation remains transparent. The ceremony illustration in `assets/muhurtam.webp` appears in the Muhurtam timeline event. The event date is **December 19, 2026**.
 - Hotel buttons link to live hotel search results rather than claiming specific hotel availability.
 - Desktop and mobile CSS breakpoints are included, but full device/browser QA is still required.

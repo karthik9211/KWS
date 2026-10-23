@@ -1,7 +1,27 @@
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+function resetToHome() {
+  if (window.location.hash) {
+    const homeUrl = new URL(window.location.href);
+    homeUrl.hash = '';
+    history.replaceState(null, '', homeUrl);
+  }
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+}
+resetToHome();
+window.addEventListener('pageshow', resetToHome);
+
+const landingScreen=document.querySelector('.landing-screen');
+landingScreen.querySelector('.landing-open').addEventListener('click',()=>{
+  landingScreen.classList.add('is-opening');
+  window.setTimeout(()=>{
+    landingScreen.hidden=true;
+    document.body.classList.remove('landing-active');
+  },650);
+});
+
 const nav=document.querySelector('.nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});const menu=document.querySelector('.menu');menu.addEventListener('click',()=>{const links=document.querySelector('.links');const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});document.querySelectorAll('.links a').forEach(a=>a.addEventListener('click',()=>{document.querySelector('.links').classList.remove('open');menu.setAttribute('aria-expanded','false')}));const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));function tick(){const delta=Math.max(0,new Date('2026-12-19T08:30:00-05:00')-new Date());const values=[Math.floor(delta/86400000),Math.floor(delta/3600000)%24,Math.floor(delta/60000)%60,Math.floor(delta/1000)%60];['days','hours','minutes','seconds'].forEach((id,i)=>document.getElementById(id).textContent=String(values[i]).padStart(2,'0'))}tick();setInterval(tick,1000);
 const hero=document.querySelector('.hero');
 const heroStage=document.querySelector('.hero-stage');
-const revealButton=document.querySelector('.scroll-down');
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let heroFrame=0;
 let heroProgress=0;
@@ -30,7 +50,3 @@ function requestHeroUpdate(){
 window.addEventListener('scroll',requestHeroUpdate,{passive:true});
 window.addEventListener('resize',requestHeroUpdate);
 updateHero();
-revealButton.addEventListener('click',()=>window.scrollBy({
-  top:Math.round(window.innerHeight*.55),
-  behavior:reduceMotion?'auto':'smooth'
-}));
