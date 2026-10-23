@@ -476,18 +476,19 @@ body.landing-active {
   }
 
   .hero-prayer {
-    top: max(220px, 27%);
-    width: 84vw;
+    top: max(145px, 17%);
+    width: 94vw;
   }
 
   .hero-invocation {
     margin-bottom: 6px;
-    font-size: 9px;
+    font-size: 11px;
+    letter-spacing: 0.7px;
   }
 
   .hero-shloka {
-    font-size: 10px;
-    line-height: 1.35;
+    font-size: 12px;
+    line-height: 1.45;
   }
 
   .hero-title h1 {
