@@ -70,66 +70,7 @@ body.landing-active {
 }
 
 .nav .menu {
-  display: none;
-  width: 42px;
-  height: 42px;
-  padding: 0;
-  place-items: center;
-  border: 1px solid rgb(183 128 45 / 32%);
-  border-radius: 50%;
-  background: rgb(255 247 235 / 82%);
-  box-shadow: 0 3px 12px rgb(77 40 25 / 12%);
   color: #6d2935;
-  cursor: pointer;
-  backdrop-filter: blur(8px);
-}
-
-.nav .menu:focus-visible {
-  outline: 2px solid #b7802d;
-  outline-offset: 3px;
-}
-
-.menu-icon {
-  position: relative;
-  display: block;
-  width: 19px;
-  height: 14px;
-}
-
-.menu-icon span {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  border-radius: 2px;
-  background: currentColor;
-  transition: top 180ms ease, opacity 180ms ease, transform 180ms ease;
-}
-
-.menu-icon span:nth-child(1) {
-  top: 1px;
-}
-
-.menu-icon span:nth-child(2) {
-  top: 6px;
-}
-
-.menu-icon span:nth-child(3) {
-  top: 11px;
-}
-
-.menu[aria-expanded="true"] .menu-icon span:nth-child(1) {
-  top: 6px;
-  transform: rotate(45deg);
-}
-
-.menu[aria-expanded="true"] .menu-icon span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu[aria-expanded="true"] .menu-icon span:nth-child(3) {
-  top: 6px;
-  transform: rotate(-45deg);
 }
 
 .nav.scrolled .menu {
@@ -401,19 +342,8 @@ body.landing-active {
 }
 
 @media (max-width: 760px) {
-  .landing-open img {
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    object-fit: cover;
-  }
-
   .nav {
     padding: 13px 18px;
-  }
-
-  .nav .menu {
-    display: grid;
   }
 
   .links {
@@ -421,44 +351,8 @@ body.landing-active {
   }
 
   .links.open {
-    top: 60px;
-    right: 18px;
-    left: auto;
-    width: min(176px, calc(100vw - 36px));
-    align-items: stretch;
-    gap: 0;
-    padding: 4px;
-    border: 1px solid rgb(183 128 45 / 32%);
-    border-radius: 10px;
-    background: rgb(255 247 235 / 97%);
-    box-shadow: 0 10px 28px rgb(77 40 25 / 18%);
-    backdrop-filter: blur(12px);
-  }
-
-  .links.open a {
-    display: flex;
-    min-height: 36px;
-    align-items: center;
-    padding: 0 10px;
-    border-radius: 5px;
-    color: #6d2935;
-    line-height: 1;
-    text-align: left;
-    text-shadow: none;
-  }
-
-  .links.open a + a {
-    border-top: 1px solid rgb(183 128 45 / 20%);
-  }
-
-  .links.open a:hover,
-  .links.open a:focus-visible {
-    background: rgb(244 232 211 / 80%);
-  }
-
-  .links.open {
-    animation: menuDropIn 160ms ease-out both;
-    transform-origin: top right;
+    background: transparent;
+    backdrop-filter: none;
   }
 
   .hero {
@@ -470,13 +364,8 @@ body.landing-active {
     width: 90vw;
   }
 
-  .hero-artwork img {
-    object-fit: contain;
-    object-position: center top;
-  }
-
   .hero-prayer {
-    top: max(220px, 27%);
+    top: 15%;
     width: 84vw;
   }
 
@@ -504,18 +393,6 @@ body.landing-active {
   .scroll-down {
     width: 48px;
     height: 48px;
-  }
-}
-
-@keyframes menuDropIn {
-  from {
-    opacity: 0;
-    transform: translateY(-5px) scale(0.98);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
   }
 }
 
@@ -551,13 +428,5 @@ body.landing-active {
 
   .scroll-down {
     animation: none;
-  }
-
-  .links.open {
-    animation: none;
-  }
-
-  .menu-icon span {
-    transition: none;
   }
 }
