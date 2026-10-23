@@ -1,0 +1,214 @@
+.nav {
+  justify-content: flex-end;
+  background: linear-gradient(#171b23d9, #171b2366);
+}
+
+.links {
+  flex: 1;
+  justify-content: space-between;
+  margin-left: clamp(24px, 6vw, 90px);
+}
+
+.links a {
+  font-size: clamp(12px, 1vw, 15px);
+  text-shadow: 0 1px 8px #1118;
+}
+
+.hero {
+  height: 180vh;
+  height: 180svh;
+  min-height: 0;
+  overflow: visible;
+  background: #4e93d3;
+}
+
+.hero-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  background: #4389ce;
+  --hero-scale: 1;
+  --sky-opacity: 1;
+  --title-opacity: 0;
+  --title-offset: 32px;
+  --birds-opacity: 1;
+}
+
+.hero-image {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  animation: none;
+  background-image: url('assets/temple.webp');
+  background-size: cover;
+  background-position: center 32%;
+  background-repeat: no-repeat;
+  transform: scale(var(--hero-scale));
+  transform-origin: center 78%;
+  will-change: transform;
+}
+
+.sky-overlay {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgb(67 137 206 / 74%) 0%,
+    rgb(67 137 206 / 64%) 24%,
+    rgb(67 137 206 / 40%) 43%,
+    rgb(67 137 206 / 12%) 58%,
+    transparent 68%
+  );
+  opacity: var(--sky-opacity);
+  pointer-events: none;
+}
+
+.birds {
+  position: absolute;
+  top: 20%;
+  left: 8%;
+  width: clamp(110px, 15vw, 190px);
+  overflow: visible;
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3.5;
+  opacity: var(--birds-opacity);
+  animation: birdsFly 19s linear infinite;
+  pointer-events: none;
+}
+
+.birds-two {
+  top: 31%;
+  width: clamp(85px, 12vw, 150px);
+  animation-delay: -9s;
+  animation-duration: 24s;
+}
+
+.hero-title {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  width: min(660px, 88vw);
+  color: #f4d78f;
+  opacity: var(--title-opacity);
+  text-align: center;
+  text-shadow: 0 2px 12px #160c06;
+  transform: translate(-50%, var(--title-offset));
+  pointer-events: none;
+}
+
+.hero-title h1,
+.hero-title h2 {
+  margin: 0;
+  font: 600 clamp(48px, 7vw, 88px)/0.96 'Cormorant Garamond', serif;
+}
+
+.hero-title p {
+  margin: 10px 0;
+  color: #fff1d0;
+  font: 600 clamp(14px, 1.5vw, 19px) 'Cormorant Garamond', serif;
+  letter-spacing: 5px;
+}
+
+.scroll-down {
+  bottom: 26px;
+  width: 54px;
+  height: 54px;
+  padding: 0;
+  background: #171b23dc;
+  font-family: inherit;
+  cursor: pointer;
+  animation: none;
+}
+
+@keyframes birdsFly {
+  from {
+    transform: translateX(-24vw);
+  }
+
+  to {
+    transform: translateX(125vw);
+  }
+}
+
+@media (max-width: 760px) {
+  .nav {
+    padding: 13px 18px;
+  }
+
+  .links {
+    margin-left: 0;
+  }
+
+  .hero {
+    height: 180vh;
+    height: 180svh;
+  }
+
+  .hero-image {
+    background-size: cover;
+    background-position: center top;
+    transform-origin: center 80%;
+  }
+
+  .sky-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgb(67 137 206 / 70%) 0%,
+      rgb(67 137 206 / 58%) 25%,
+      rgb(67 137 206 / 32%) 43%,
+      rgb(67 137 206 / 10%) 58%,
+      transparent 68%
+    );
+  }
+
+  .hero-title {
+    top: 58%;
+    width: 92vw;
+  }
+
+  .hero-title h1,
+  .hero-title h2 {
+    font-size: clamp(40px, 10vw, 60px);
+  }
+
+  .scroll-down {
+    bottom: 20px;
+    width: 54px;
+    height: 54px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero {
+    height: 100vh;
+    height: 100svh;
+  }
+
+  .hero-stage {
+    position: relative;
+  }
+
+  .hero-image {
+    transform: none;
+  }
+
+  .sky-overlay {
+    opacity: 0;
+  }
+
+  .hero-title {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  .birds {
+    animation: none;
+  }
+}
