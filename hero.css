@@ -686,6 +686,37 @@ body.landing-active {
   line-height: 1.5;
 }
 
+.rsvp-popup {
+  position: fixed;
+  z-index: 200;
+  right: 16px;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  left: 16px;
+  width: fit-content;
+  max-width: calc(100% - 32px);
+  margin: 0 auto;
+  padding: 12px 20px;
+  border: 1px solid #d4a65b;
+  border-radius: 999px;
+  background: #fff9f1;
+  box-shadow: 0 8px 28px rgb(77 40 25 / 18%);
+  color: #4d2819;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+}
+
+.rsvp-popup.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 .rsvp-response-frame {
   position: absolute;
   width: 1px;
@@ -835,6 +866,13 @@ body.landing-active {
   .rsvp-form input {
     min-height: 56px;
     font-size: 16px;
+  }
+
+  .rsvp-popup {
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    left: 12px;
+    max-width: calc(100% - 24px);
   }
 
   .rsvp-status {
