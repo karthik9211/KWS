@@ -1,4 +1,4 @@
-# Karthikeya Weds Sowndharya — Cinematic Wedding Website
+# Sowndharya Weds Karthikeya — Cinematic Wedding Website
 
 ## Quick preview
 Open `index.html` in Chrome, Edge, or Safari. All local images and website code are included. Google Fonts require internet access.
