@@ -133,7 +133,7 @@ body.landing-active {
   width: 50%;
   height: 100%;
   transform-style: preserve-3d;
-  transition: transform 3400ms cubic-bezier(.45, 0, .2, 1) 100ms;
+  transition: transform 3400ms cubic-bezier(.45, 0, .2, 1) 100ms, opacity 3400ms ease 100ms;
   backface-visibility: visible;
 }
 
@@ -174,10 +174,12 @@ body.landing-active {
 
 .landing-screen.is-opening .landing-door-left {
   transform: rotateY(90deg);
+  opacity: 0.72;
 }
 
 .landing-screen.is-opening .landing-door-right {
   transform: rotateY(-90deg);
+  opacity: 0.72;
 }
 
 .landing-screen.is-opening::before {
@@ -1004,6 +1006,14 @@ body.landing-active {
 }
 
 @media (max-width: 760px) {
+  .landing-screen.is-opening .landing-door-left {
+    transform: rotateY(82deg);
+  }
+
+  .landing-screen.is-opening .landing-door-right {
+    transform: rotateY(-82deg);
+  }
+
   .hero-artwork {
     animation: none;
   }
