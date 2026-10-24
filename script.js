@@ -54,9 +54,20 @@ updateHero();
 const rsvpForm=document.querySelector('.rsvp-form');
 const rsvpResponseFrame=document.querySelector('.rsvp-response-frame');
 const rsvpStatus=document.querySelector('.rsvp-status');
+const rsvpPopup=document.querySelector('.rsvp-popup');
 const rsvpSubmitButton=rsvpForm.querySelector('button[type="submit"]');
 let rsvpSubmissionPending=false;
 let rsvpSubmissionTimeout;
+let rsvpStatusTimeout;
+
+function showRsvpPopup(message){
+  window.clearTimeout(rsvpStatusTimeout);
+  rsvpPopup.textContent=message;
+  rsvpPopup.classList.add('is-visible');
+  rsvpStatusTimeout=window.setTimeout(()=>{
+    rsvpPopup.classList.remove('is-visible');
+  },4000);
+}
 
 rsvpForm.addEventListener('submit',()=>{
   rsvpSubmissionPending=true;
@@ -77,4 +88,5 @@ rsvpResponseFrame.addEventListener('load',()=>{
   rsvpSubmitButton.disabled=false;
   rsvpForm.reset();
   rsvpStatus.textContent='Thank you! Your RSVP has been submitted.';
+  showRsvpPopup('RSVP submitted successfully!');
 });
