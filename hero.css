@@ -55,6 +55,24 @@ body.landing-active {
   object-fit: cover;
 }
 
+.landing-couple-names {
+  position: absolute;
+  top: 41%;
+  left: 25%;
+  z-index: 2;
+  display: grid;
+  width: 50%;
+  box-sizing: border-box;
+  justify-items: center;
+  color: #fff1d0;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(1rem, 5vw, 1.5rem);
+  line-height: 0.95;
+  text-align: center;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 85%);
+  pointer-events: none;
+}
+
 .landing-screen.is-opening .landing-artwork {
   filter: brightness(1.08);
   transform: translateX(-50%) scale(1.65) translate3d(0, -1%, 0);
@@ -505,6 +523,48 @@ body.landing-active {
   margin: 0;
   font: 500 clamp(9px, 1.05vw, 12px)/1.42 'Cormorant Garamond', serif;
   text-shadow: 0 1px 0 rgb(255 250 238 / 92%);
+}
+
+.hero-invitation-copy {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  display: flex;
+  width: min(88vw, 600px);
+  flex-direction: column;
+  align-items: center;
+  color: #6d2935;
+  text-align: center;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.hero-invitation-copy .hero-blessing {
+  max-width: 90%;
+  margin: 0 0 clamp(10px, 1.6vh, 16px);
+  font: 500 clamp(17px, 2vw, 22px)/1.35 'Cormorant Garamond', serif;
+  text-shadow: 0 1px 2px rgb(255 250 238 / 90%);
+}
+
+.hero-couple-title {
+  margin: 0;
+  color: #762838;
+  font: 500 clamp(38px, 5.2vw, 58px)/0.82 'Cormorant Garamond', serif;
+  text-shadow: 0 1px 2px rgb(255 250 238 / 90%);
+}
+
+.hero-couple-title span {
+  display: inline-block;
+  margin: 5px 0;
+  color: #b3874f;
+  font-size: 0.62em;
+  line-height: 1;
+}
+
+.hero-wedding-celebration {
+  margin: clamp(9px, 1.4vh, 14px) 0 0;
+  color: #792f3e;
+  font: 500 clamp(19px, 2.4vw, 27px)/1.2 'Cormorant Garamond', serif;
 }
 
 .hero-title {
@@ -1292,6 +1352,26 @@ body.landing-active {
   .hero-shloka {
     font-size: 12px;
     line-height: 1.45;
+  }
+
+  .hero-invitation-copy {
+    top: 30%;
+    width: 90vw;
+  }
+
+  .hero-invitation-copy .hero-blessing {
+    max-width: 94%;
+    margin-bottom: 10px;
+    font-size: clamp(16px, 4.2vw, 18px);
+    line-height: 1.3;
+  }
+
+  .hero-couple-title {
+    font-size: clamp(38px, 10vw, 48px);
+  }
+
+  .hero-wedding-celebration {
+    font-size: clamp(19px, 5vw, 23px);
   }
 
   .hero-title h1 {
