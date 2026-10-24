@@ -1667,7 +1667,7 @@ body.landing-active {
     order: 5;
     width: min(38vw, 160px);
     max-height: none;
-    margin-top: 8px;
+    margin-top: 34px;
     transform: none;
   }
 
