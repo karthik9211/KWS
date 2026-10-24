@@ -98,6 +98,7 @@ window.addEventListener('resize',requestScrollParallax);
 requestScrollParallax();
 
 const rsvpForm=document.querySelector('.rsvp-form');
+const rsvpPhoneInput=document.querySelector('#rsvp-phone');
 const rsvpResponseFrame=document.querySelector('.rsvp-response-frame');
 const rsvpStatus=document.querySelector('.rsvp-status');
 const rsvpPopup=document.querySelector('.rsvp-popup');
@@ -105,6 +106,13 @@ const rsvpSubmitButton=rsvpForm.querySelector('button[type="submit"]');
 let rsvpSubmissionPending=false;
 let rsvpSubmissionTimeout;
 let rsvpStatusTimeout;
+
+rsvpPhoneInput.addEventListener('input',()=>rsvpPhoneInput.setCustomValidity(''));
+rsvpPhoneInput.addEventListener('invalid',()=>{
+  rsvpPhoneInput.setCustomValidity(rsvpPhoneInput.validity.valueMissing
+    ?'Please enter your 10-digit phone number.'
+    :'Please enter a valid phone number using exactly 10 digits.');
+});
 
 function showRsvpPopup(message){
   window.clearTimeout(rsvpStatusTimeout);
