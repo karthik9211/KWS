@@ -62,10 +62,10 @@ body.landing-active {
 
 .landing-doors {
   position: absolute;
-  top: 43%;
+  top: 42%;
   left: 25%;
   width: 50%;
-  height: 34%;
+  height: 37%;
   perspective: 1100px;
   pointer-events: none;
 }
@@ -156,9 +156,9 @@ body.landing-active {
 
 .landing-door-face img {
   position: absolute;
-  top: -126.47%;
+  top: -113.51%;
   width: 400%;
-  height: 294.12%;
+  height: 270.27%;
   max-width: none;
   object-fit: cover;
   pointer-events: none;
