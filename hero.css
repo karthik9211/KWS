@@ -1055,6 +1055,11 @@ body.landing-active {
   padding-bottom: 48px;
 }
 
+.venue h2,
+.stay h2 {
+  color: var(--wine);
+}
+
 .venue + .stay {
   padding-top: 48px;
 }
@@ -1641,7 +1646,7 @@ body.landing-active {
   }
 }
 
-@media (max-width: 760px) and (max-height: 760px) {
+@media (max-width: 760px) {
   .hero {
     height: auto;
     min-height: 100svh;
@@ -1665,9 +1670,9 @@ body.landing-active {
     bottom: auto;
     left: auto;
     order: 5;
-    width: min(38vw, 160px);
+    width: min(46vw, 190px);
     max-height: none;
-    margin-top: 72px;
+    margin-top: clamp(24px, 4vh, 36px);
     transform: none;
   }
 
