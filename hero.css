@@ -1574,7 +1574,7 @@ body.landing-active {
   .hero-couple-illustration {
     bottom: 5.5%;
     width: min(56vw, 240px);
-    max-height: min(40%, 36svh);
+    max-height: min(40%, 34svh);
   }
 
   .hero-invocation {
@@ -1617,7 +1617,7 @@ body.landing-active {
   }
 
   .hero-couple-title {
-    font-size: clamp(38px, 11vw, 48px);
+    font-size: clamp(36px, 10vw, 44px);
   }
 
   .hero-wedding-celebration {
