@@ -640,6 +640,33 @@ body.landing-active {
   letter-spacing: clamp(1.5px, 0.25vw, 3px);
 }
 
+.hero-scroll-prompt {
+  position: absolute;
+  right: clamp(18px, 3vw, 42px);
+  bottom: 18px;
+  z-index: 3;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  color: #51101f;
+  font: 600 12px/1.2 'DM Sans', sans-serif;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 3px rgb(255 250 238 / 90%);
+}
+
+.hero-scroll-prompt .hero-scroll-arrow {
+  font-size: 17px;
+  line-height: 1;
+  animation: heroScrollArrowNudge 2.2s ease-in-out infinite;
+}
+
+.hero-scroll-prompt:focus-visible {
+  border-radius: 3px;
+  outline: 2px solid #7d1626;
+  outline-offset: 4px;
+}
+
 @media (min-width: 761px) {
   .hero-auspicious-words {
     top: 5%;
@@ -672,6 +699,11 @@ body.landing-active {
     max-width: 96%;
     font-size: clamp(16px, 1.5vw, 21px);
     line-height: 1.25;
+  }
+
+  .hero-scroll-prompt {
+    right: 24px;
+    bottom: 16px;
   }
 
   .hero-couple-title {
@@ -1209,6 +1241,17 @@ body.landing-active {
   }
 }
 
+@keyframes heroScrollArrowNudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+}
+
 @media (max-width: 760px) {
   .landing-screen.is-opening .landing-door-left {
     transform: rotateY(82deg);
@@ -1550,6 +1593,14 @@ body.landing-active {
     line-height: 1.18;
   }
 
+  .hero-scroll-prompt {
+    right: auto;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+
   .hero-shloka {
     overflow-wrap: break-word;
   }
@@ -1641,7 +1692,8 @@ body.landing-active {
     transform: translate(-50%, -50%);
   }
 
-  .scroll-down {
+  .scroll-down,
+  .hero-scroll-prompt .hero-scroll-arrow {
     animation: none;
   }
 
