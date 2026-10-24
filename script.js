@@ -50,3 +50,31 @@ function requestHeroUpdate(){
 window.addEventListener('scroll',requestHeroUpdate,{passive:true});
 window.addEventListener('resize',requestHeroUpdate);
 updateHero();
+
+const rsvpForm=document.querySelector('.rsvp-form');
+const rsvpResponseFrame=document.querySelector('.rsvp-response-frame');
+const rsvpStatus=document.querySelector('.rsvp-status');
+const rsvpSubmitButton=rsvpForm.querySelector('button[type="submit"]');
+let rsvpSubmissionPending=false;
+let rsvpSubmissionTimeout;
+
+rsvpForm.addEventListener('submit',()=>{
+  rsvpSubmissionPending=true;
+  rsvpSubmitButton.disabled=true;
+  rsvpStatus.textContent='Submitting your RSVP...';
+  window.clearTimeout(rsvpSubmissionTimeout);
+  rsvpSubmissionTimeout=window.setTimeout(()=>{
+    rsvpSubmissionPending=false;
+    rsvpSubmitButton.disabled=false;
+    rsvpStatus.textContent='We could not confirm your RSVP. Please check your connection and try again.';
+  },15000);
+});
+
+rsvpResponseFrame.addEventListener('load',()=>{
+  if(!rsvpSubmissionPending)return;
+  rsvpSubmissionPending=false;
+  window.clearTimeout(rsvpSubmissionTimeout);
+  rsvpSubmitButton.disabled=false;
+  rsvpForm.reset();
+  rsvpStatus.textContent='Thank you! Your RSVP has been submitted.';
+});

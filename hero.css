@@ -263,6 +263,55 @@ body.landing-active {
   --petal-delay: -1s;
 }
 
+.hero-petals span:nth-child(6) {
+  --petal-left: 5%;
+  --petal-size: 10px;
+  --petal-duration: 13s;
+  --petal-delay: -7s;
+}
+
+.hero-petals span:nth-child(7) {
+  --petal-left: 23%;
+  --petal-size: 12px;
+  --petal-duration: 10s;
+  --petal-delay: -4s;
+}
+
+.hero-petals span:nth-child(8) {
+  --petal-left: 43%;
+  --petal-size: 8px;
+  --petal-duration: 15s;
+  --petal-delay: -12s;
+}
+
+.hero-petals span:nth-child(9) {
+  --petal-left: 67%;
+  --petal-size: 11px;
+  --petal-duration: 11s;
+  --petal-delay: -8s;
+}
+
+.hero-petals span:nth-child(10) {
+  --petal-left: 96%;
+  --petal-size: 9px;
+  --petal-duration: 14s;
+  --petal-delay: -5s;
+}
+
+.hero-petals span:nth-child(11) {
+  --petal-left: 36%;
+  --petal-size: 10px;
+  --petal-duration: 12s;
+  --petal-delay: -10s;
+}
+
+.hero-petals span:nth-child(12) {
+  --petal-left: 81%;
+  --petal-size: 13px;
+  --petal-duration: 13s;
+  --petal-delay: -2s;
+}
+
 .hero-prayer {
   position: absolute;
   top: 15%;
@@ -441,9 +490,217 @@ body.landing-active {
   line-height: 1.45;
 }
 
+.events {
+  padding-bottom: 32px;
+}
+
+.events + .venue {
+  padding-top: 32px;
+}
+
+.events .countdown {
+  display: grid;
+  position: relative;
+  isolation: isolate;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  gap: 14px;
+  width: min(100%, 760px);
+  margin: 52px auto 0;
+  padding: 36px clamp(18px, 4vw, 48px) 26px;
+  overflow: hidden;
+  border: 1px solid rgb(183 128 45 / 34%);
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgb(255 250 241 / 96%), rgb(255 239 214 / 94%));
+  box-shadow: 0 12px 32px rgb(83 54 31 / 10%), inset 0 0 0 5px rgb(183 128 45 / 7%);
+}
+
+.countdown-confetti {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.countdown-confetti span {
+  position: absolute;
+  top: var(--confetti-top);
+  left: var(--confetti-left);
+  width: var(--confetti-width, 7px);
+  height: var(--confetti-height, 11px);
+  border-radius: 2px;
+  background: var(--confetti-color);
+  opacity: 0;
+  animation: countdownConfetti 3.2s ease-out var(--confetti-delay) infinite;
+}
+
+.countdown-confetti span:nth-child(4n + 1) {
+  --confetti-color: #b7802d;
+}
+
+.countdown-confetti span:nth-child(4n + 2) {
+  --confetti-color: #7d1626;
+}
+
+.countdown-confetti span:nth-child(4n + 3) {
+  --confetti-color: #d69a8c;
+}
+
+.countdown-confetti span.confetti-gold {
+  background: #d8a642;
+  width: 8px;
+  height: 13px;
+  box-shadow: 0 0 7px rgb(216 166 66 / 55%);
+}
+
+.countdown-confetti span.confetti-gold:nth-child(25) { --confetti-left: 4%; --confetti-top: 74%; --confetti-x: 20vw; --confetti-y: -112px; --confetti-fall-x: 29vw; --confetti-delay: 0s; }
+.countdown-confetti span.confetti-gold:nth-child(26) { --confetti-left: 7%; --confetti-top: 79%; --confetti-x: 16vw; --confetti-y: -65px; --confetti-fall-x: 23vw; --confetti-delay: 0.08s; }
+.countdown-confetti span.confetti-gold:nth-child(27) { --confetti-left: 5%; --confetti-top: 68%; --confetti-x: 25vw; --confetti-y: -145px; --confetti-fall-x: 33vw; --confetti-delay: 0.16s; }
+.countdown-confetti span.confetti-gold:nth-child(28) { --confetti-left: 96%; --confetti-top: 74%; --confetti-x: -20vw; --confetti-y: -112px; --confetti-fall-x: -29vw; --confetti-delay: 0s; }
+.countdown-confetti span.confetti-gold:nth-child(29) { --confetti-left: 93%; --confetti-top: 79%; --confetti-x: -16vw; --confetti-y: -65px; --confetti-fall-x: -23vw; --confetti-delay: 0.08s; }
+.countdown-confetti span.confetti-gold:nth-child(30) { --confetti-left: 95%; --confetti-top: 68%; --confetti-x: -25vw; --confetti-y: -145px; --confetti-fall-x: -33vw; --confetti-delay: 0.16s; }
+
+.countdown-confetti span:nth-child(3n) {
+  --confetti-width: 5px;
+  --confetti-height: 8px;
+}
+
+.countdown-confetti span:nth-child(1) { --confetti-left: 4%; --confetti-top: 74%; --confetti-x: 20vw; --confetti-y: -112px; --confetti-fall-x: 29vw; --confetti-delay: 0s; }
+.countdown-confetti span:nth-child(2) { --confetti-left: 7%; --confetti-top: 79%; --confetti-x: 16vw; --confetti-y: -65px; --confetti-fall-x: 23vw; --confetti-delay: 0.08s; }
+.countdown-confetti span:nth-child(3) { --confetti-left: 5%; --confetti-top: 68%; --confetti-x: 25vw; --confetti-y: -145px; --confetti-fall-x: 33vw; --confetti-delay: 0.16s; }
+.countdown-confetti span:nth-child(4) { --confetti-left: 10%; --confetti-top: 82%; --confetti-x: 13vw; --confetti-y: -43px; --confetti-fall-x: 20vw; --confetti-delay: 0.04s; }
+.countdown-confetti span:nth-child(5) { --confetti-left: 6%; --confetti-top: 72%; --confetti-x: 22vw; --confetti-y: -128px; --confetti-fall-x: 30vw; --confetti-delay: 0.2s; }
+.countdown-confetti span:nth-child(6) { --confetti-left: 9%; --confetti-top: 77%; --confetti-x: 18vw; --confetti-y: -81px; --confetti-fall-x: 26vw; --confetti-delay: 0.12s; }
+.countdown-confetti span:nth-child(7) { --confetti-left: 96%; --confetti-top: 74%; --confetti-x: -20vw; --confetti-y: -112px; --confetti-fall-x: -29vw; --confetti-delay: 0s; }
+.countdown-confetti span:nth-child(8) { --confetti-left: 93%; --confetti-top: 79%; --confetti-x: -16vw; --confetti-y: -65px; --confetti-fall-x: -23vw; --confetti-delay: 0.08s; }
+.countdown-confetti span:nth-child(9) { --confetti-left: 95%; --confetti-top: 68%; --confetti-x: -25vw; --confetti-y: -145px; --confetti-fall-x: -33vw; --confetti-delay: 0.16s; }
+.countdown-confetti span:nth-child(10) { --confetti-left: 90%; --confetti-top: 82%; --confetti-x: -13vw; --confetti-y: -43px; --confetti-fall-x: -20vw; --confetti-delay: 0.04s; }
+.countdown-confetti span:nth-child(11) { --confetti-left: 94%; --confetti-top: 72%; --confetti-x: -22vw; --confetti-y: -128px; --confetti-fall-x: -30vw; --confetti-delay: 0.2s; }
+.countdown-confetti span:nth-child(12) { --confetti-left: 91%; --confetti-top: 77%; --confetti-x: -18vw; --confetti-y: -81px; --confetti-fall-x: -26vw; --confetti-delay: 0.12s; }
+.countdown-confetti span:nth-child(13) { --confetti-left: 4%; --confetti-top: 74%; --confetti-x: 20vw; --confetti-y: -112px; --confetti-fall-x: 29vw; --confetti-delay: 2.1s; }
+.countdown-confetti span:nth-child(14) { --confetti-left: 7%; --confetti-top: 79%; --confetti-x: 16vw; --confetti-y: -65px; --confetti-fall-x: 23vw; --confetti-delay: 2.18s; }
+.countdown-confetti span:nth-child(15) { --confetti-left: 5%; --confetti-top: 68%; --confetti-x: 25vw; --confetti-y: -145px; --confetti-fall-x: 33vw; --confetti-delay: 2.26s; }
+.countdown-confetti span:nth-child(16) { --confetti-left: 10%; --confetti-top: 82%; --confetti-x: 13vw; --confetti-y: -43px; --confetti-fall-x: 20vw; --confetti-delay: 2.14s; }
+.countdown-confetti span:nth-child(17) { --confetti-left: 6%; --confetti-top: 72%; --confetti-x: 22vw; --confetti-y: -128px; --confetti-fall-x: 30vw; --confetti-delay: 2.3s; }
+.countdown-confetti span:nth-child(18) { --confetti-left: 9%; --confetti-top: 77%; --confetti-x: 18vw; --confetti-y: -81px; --confetti-fall-x: 26vw; --confetti-delay: 2.22s; }
+.countdown-confetti span:nth-child(19) { --confetti-left: 96%; --confetti-top: 74%; --confetti-x: -20vw; --confetti-y: -112px; --confetti-fall-x: -29vw; --confetti-delay: 2.1s; }
+.countdown-confetti span:nth-child(20) { --confetti-left: 93%; --confetti-top: 79%; --confetti-x: -16vw; --confetti-y: -65px; --confetti-fall-x: -23vw; --confetti-delay: 2.18s; }
+.countdown-confetti span:nth-child(21) { --confetti-left: 95%; --confetti-top: 68%; --confetti-x: -25vw; --confetti-y: -145px; --confetti-fall-x: -33vw; --confetti-delay: 2.26s; }
+.countdown-confetti span:nth-child(22) { --confetti-left: 90%; --confetti-top: 82%; --confetti-x: -13vw; --confetti-y: -43px; --confetti-fall-x: -20vw; --confetti-delay: 2.14s; }
+.countdown-confetti span:nth-child(23) { --confetti-left: 94%; --confetti-top: 72%; --confetti-x: -22vw; --confetti-y: -128px; --confetti-fall-x: -30vw; --confetti-delay: 2.3s; }
+.countdown-confetti span:nth-child(24) { --confetti-left: 91%; --confetti-top: 77%; --confetti-x: -18vw; --confetti-y: -81px; --confetti-fall-x: -26vw; --confetti-delay: 2.22s; }
+
+.events .countdown > div:not(.countdown-confetti) {
+  position: relative;
+  z-index: 1;
+  align-items: center;
+  min-width: 0;
+}
+
+.events .countdown strong {
+  font-size: clamp(42px, 5vw, 58px);
+  line-height: 1;
+}
+
+.events .countdown small {
+  margin-top: 5px;
+  color: #795945;
+  font-size: 10px;
+  letter-spacing: 1.8px;
+}
+
+.venue-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    linear-gradient(rgb(255 244 223 / 76%), rgb(255 244 223 / 76%)),
+    url('assets/venue-temple.png') center / cover no-repeat;
+}
+
+.venue {
+  padding-bottom: 48px;
+}
+
+.venue + .stay {
+  padding-top: 48px;
+}
+
+.venue-card > * {
+  position: relative;
+  z-index: 1;
+}
+
 .hotel-grid {
   grid-template-columns: minmax(0, 560px);
   justify-content: center;
+}
+
+.rsvp h2 {
+  color: var(--wine);
+  margin-bottom: 36px;
+}
+
+.rsvp-form {
+  max-width: 750px;
+  padding: 38px 48px;
+  border: 1px solid #dfc49b;
+  border-radius: 24px;
+  background: #fffcf7;
+  box-shadow: none;
+}
+
+.rsvp-form label {
+  margin-bottom: 22px;
+  color: #654330;
+  font-size: 16px;
+}
+
+.rsvp-form label span {
+  color: var(--wine);
+}
+
+.rsvp-form input {
+  min-height: 62px;
+  padding: 16px 18px;
+  border-color: #d8b88d;
+  border-radius: 12px;
+  font-size: 17px;
+}
+
+.rsvp-form .btn {
+  width: 100%;
+  margin-top: 4px;
+  padding: 17px 24px;
+  border-radius: 999px;
+  font-size: 16px;
+}
+
+.rsvp-status {
+  min-height: 22px;
+  margin: 18px 0 0;
+  color: #795945;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.rsvp-response-frame {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.hotel-icon svg {
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: auto;
 }
 
 @keyframes invitationReveal {
@@ -482,6 +739,29 @@ body.landing-active {
   }
 }
 
+@keyframes countdownConfetti {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.35);
+  }
+
+  8% {
+    opacity: 1;
+    transform: translate3d(var(--confetti-x), var(--confetti-y), 0) rotate(180deg) scale(1.15);
+  }
+
+  22% {
+    opacity: 0.95;
+    transform: translate3d(var(--confetti-x), var(--confetti-y), 0) rotate(300deg) scale(1);
+  }
+
+  78%,
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--confetti-fall-x), 175px, 0) rotate(520deg);
+  }
+}
+
 @keyframes invitationNudge {
   50% {
     transform: translate(-50%, 5px);
@@ -498,7 +778,68 @@ body.landing-active {
   }
 
   .events {
-    padding: 42px 14px;
+    padding: 42px 14px 12px;
+  }
+
+  .events + .venue {
+    padding-top: 12px;
+  }
+
+  .venue {
+    padding-bottom: 12px;
+  }
+
+  .stay {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .stay + .rsvp {
+    padding-top: 12px;
+    background: #f9eddd;
+  }
+
+  .venue + .stay {
+    padding-top: 12px;
+  }
+
+  .venue-card {
+    margin-bottom: 10px;
+  }
+
+  .stay .intro {
+    margin-bottom: 18px;
+  }
+
+  .stay .hotel {
+    padding: 39px 20px;
+    border: 1px solid #d4a65b;
+    outline: 1px solid #d4a65b;
+    outline-offset: 7px;
+  }
+
+  .rsvp h2 {
+    margin-bottom: 28px;
+  }
+
+  .rsvp-form {
+    max-width: 560px;
+    padding: 39px 20px 16px;
+    border: 1px solid #d4a65b;
+    outline: 1px solid #d4a65b;
+    outline-offset: 7px;
+    border-radius: 0;
+    background: #fff9f1;
+  }
+
+  .rsvp-form input {
+    min-height: 56px;
+    font-size: 16px;
+  }
+
+  .rsvp-status {
+    min-height: 0;
+    margin-top: 8px;
   }
 
   .events h2 {
@@ -577,7 +918,20 @@ body.landing-active {
   }
 
   .events .countdown {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
     margin-top: 30px;
+    padding: 34px 12px 20px;
+    border-radius: 18px;
+  }
+
+  .events .countdown strong {
+    font-size: clamp(34px, 10vw, 44px);
+  }
+
+  .events .countdown small {
+    font-size: 8px;
+    letter-spacing: 1px;
   }
 
   .landing-open img {
@@ -730,6 +1084,10 @@ body.landing-active {
   }
 
   .scroll-down {
+    animation: none;
+  }
+
+  .countdown-confetti span {
     animation: none;
   }
 
