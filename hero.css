@@ -1572,9 +1572,9 @@ body.landing-active {
   }
 
   .hero-couple-illustration {
-    bottom: 10%;
-    width: min(43vw, 180px);
-    max-height: min(38%, 32svh);
+    bottom: 5.5%;
+    width: min(56vw, 240px);
+    max-height: min(40%, 36svh);
   }
 
   .hero-invocation {
