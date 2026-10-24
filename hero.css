@@ -400,15 +400,12 @@ body.landing-active {
   object-fit: contain;
 }
 
-.event-image-lunch,
-.event-image-vratam {
-  display: grid;
-  place-items: center;
-  font-size: 44px;
-}
-
 .event-image-lunch {
   object-fit: cover;
+}
+
+.event-image-vratam {
+  object-fit: contain;
 }
 
 .event-content {
@@ -554,7 +551,6 @@ body.landing-active {
 
   .event-image-lunch,
   .event-image-vratam {
-    display: grid;
     flex: 0 0 64px;
   }
 
