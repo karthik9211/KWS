@@ -18,10 +18,21 @@ function syncMusicToggle(){
   musicToggle.setAttribute('aria-pressed',String(playing));
   musicToggle.setAttribute('aria-label',playing?'Mute music':'Play music');
 }
+const musicGestures=['pointerdown','touchend','click','keydown'];
+function onFirstGesture(event){
+  if(musicToggle.contains(event.target))return;
+  startMusic();
+}
 function startMusic(){
-  musicToggle.hidden=false;
   music.play().catch(()=>{});
 }
+function stopWaitingForGesture(){
+  musicGestures.forEach(type=>document.removeEventListener(type,onFirstGesture,true));
+}
+musicToggle.hidden=false;
+musicGestures.forEach(type=>document.addEventListener(type,onFirstGesture,true));
+music.addEventListener('play',stopWaitingForGesture,{once:true});
+startMusic();
 music.addEventListener('play',syncMusicToggle);
 music.addEventListener('pause',syncMusicToggle);
 musicToggle.addEventListener('click',()=>{music.paused?music.play().catch(()=>{}):music.pause()});
