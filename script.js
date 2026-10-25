@@ -11,6 +11,7 @@ resetToHome();
 window.addEventListener('pageshow', resetToHome);
 
 const music=document.getElementById('wedding-audio');
+music.volume=0.35;
 const musicToggle=document.querySelector('.music-toggle');
 let musicMuted=false;
 function syncMusicToggle(){
