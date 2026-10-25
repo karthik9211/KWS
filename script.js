@@ -12,11 +12,11 @@ window.addEventListener('pageshow', resetToHome);
 
 const music=document.getElementById('wedding-audio');
 const musicToggle=document.querySelector('.music-toggle');
+let musicMuted=false;
 function syncMusicToggle(){
-  const playing=!music.paused;
-  musicToggle.classList.toggle('is-playing',playing);
-  musicToggle.setAttribute('aria-pressed',String(playing));
-  musicToggle.setAttribute('aria-label',playing?'Mute music':'Play music');
+  musicToggle.classList.toggle('is-muted',musicMuted);
+  musicToggle.setAttribute('aria-pressed',String(!musicMuted));
+  musicToggle.setAttribute('aria-label',musicMuted?'Unmute music':'Mute music');
 }
 const musicGestures=['pointerdown','touchend','click','keydown'];
 function onFirstGesture(event){
@@ -25,17 +25,20 @@ function onFirstGesture(event){
 }
 function startMusic(){
   musicToggle.hidden=false;
-  music.play().catch(()=>{});
+  if(!musicMuted)music.play().catch(()=>{});
 }
 function stopWaitingForGesture(){
   musicGestures.forEach(type=>document.removeEventListener(type,onFirstGesture,true));
 }
 musicGestures.forEach(type=>document.addEventListener(type,onFirstGesture,true));
 music.addEventListener('play',stopWaitingForGesture,{once:true});
-music.addEventListener('play',syncMusicToggle);
-music.addEventListener('pause',syncMusicToggle);
-musicToggle.addEventListener('click',()=>{music.paused?music.play().catch(()=>{}):music.pause()});
-const landingScreen=document.querySelector('.landing-screen');
+musicToggle.addEventListener('click',()=>{
+  if(!musicMuted&&music.paused){music.play().catch(()=>{});return}
+  musicMuted=!musicMuted;
+  if(musicMuted)music.pause();else music.play().catch(()=>{});
+  syncMusicToggle();
+});
+syncMusicToggle();const landingScreen=document.querySelector('.landing-screen');
 const landingOpenButton=landingScreen.querySelector('.landing-open');
 function openLanding(){
   if(landingScreen.classList.contains('is-opening'))return;
