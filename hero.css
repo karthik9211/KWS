@@ -1781,3 +1781,6 @@ body.landing-active {
 @keyframes tap-ring{0%,30%{opacity:0;transform:scale(.3)}40%{opacity:.9}100%{opacity:0;transform:scale(4.2)}}
 .landing-screen.is-opening .landing-tap-hint{opacity:0}
 @media (prefers-reduced-motion:reduce){.landing-tap-hint .tap-finger,.landing-tap-hint .tap-ring{animation:none}}
+
+.desktop-notice{display:none}
+@media (min-width:761px){body.landing-active,body{overflow:hidden}body>*:not(.desktop-notice){display:none!important}.desktop-notice{display:flex;position:fixed;inset:0;align-items:center;justify-content:center;background:#fff6e8;padding:24px}.desktop-notice p{margin:0;max-width:min(640px,90vw);padding:clamp(28px,4vw,56px) clamp(32px,5vw,72px);border:1px solid #b7802d;outline:1px solid #b7802d;outline-offset:7px;text-align:center;font:500 clamp(26px,3.2vw,44px)/1.4 'Cormorant Garamond',serif;color:#7d1626}}
