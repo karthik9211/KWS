@@ -46,7 +46,6 @@ const landingScreen=document.querySelector('.landing-screen');
 const landingOpenButton=landingScreen.querySelector('.landing-open');
 function openLanding(){
   if(landingScreen.classList.contains('is-opening'))return;
-  window.clearTimeout(landingAutoOpenTimer);
   landingScreen.classList.add('is-opening');
   startMusic();
   const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -58,7 +57,6 @@ function openLanding(){
     document.body.classList.remove('landing-active');
   },reducedMotion?0:3900);
 }
-const landingAutoOpenTimer=window.setTimeout(openLanding,3000);
 landingOpenButton.addEventListener('click',openLanding);
 
 const nav=document.querySelector('.nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});const menu=document.querySelector('.menu');menu.addEventListener('click',()=>{const links=document.querySelector('.links');const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});document.querySelectorAll('.links a').forEach(a=>a.addEventListener('click',()=>{document.querySelector('.links').classList.remove('open');menu.setAttribute('aria-expanded','false')}));const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));function tick(){const delta=Math.max(0,new Date('2026-12-19T08:30:00-05:00')-new Date());const values=[Math.floor(delta/86400000),Math.floor(delta/3600000)%24,Math.floor(delta/60000)%60,Math.floor(delta/1000)%60];['days','hours','minutes','seconds'].forEach((id,i)=>document.getElementById(id).textContent=String(values[i]).padStart(2,'0'))}tick();setInterval(tick,1000);
