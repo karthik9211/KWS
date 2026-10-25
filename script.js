@@ -20,19 +20,18 @@ function syncMusicToggle(){
 }
 const musicGestures=['pointerdown','touchend','click','keydown'];
 function onFirstGesture(event){
-  if(musicToggle.contains(event.target))return;
+  if(musicToggle.contains(event.target)||!landingScreen.classList.contains('is-opening'))return;
   startMusic();
 }
 function startMusic(){
+  musicToggle.hidden=false;
   music.play().catch(()=>{});
 }
 function stopWaitingForGesture(){
   musicGestures.forEach(type=>document.removeEventListener(type,onFirstGesture,true));
 }
-musicToggle.hidden=false;
 musicGestures.forEach(type=>document.addEventListener(type,onFirstGesture,true));
 music.addEventListener('play',stopWaitingForGesture,{once:true});
-startMusic();
 music.addEventListener('play',syncMusicToggle);
 music.addEventListener('pause',syncMusicToggle);
 musicToggle.addEventListener('click',()=>{music.paused?music.play().catch(()=>{}):music.pause()});
@@ -52,7 +51,7 @@ function openLanding(){
     document.body.classList.remove('landing-active');
   },reducedMotion?0:3900);
 }
-const landingAutoOpenTimer=window.setTimeout(openLanding,8000);
+const landingAutoOpenTimer=window.setTimeout(openLanding,3000);
 landingOpenButton.addEventListener('click',openLanding);
 
 const nav=document.querySelector('.nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});const menu=document.querySelector('.menu');menu.addEventListener('click',()=>{const links=document.querySelector('.links');const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});document.querySelectorAll('.links a').forEach(a=>a.addEventListener('click',()=>{document.querySelector('.links').classList.remove('open');menu.setAttribute('aria-expanded','false')}));const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));function tick(){const delta=Math.max(0,new Date('2026-12-19T08:30:00-05:00')-new Date());const values=[Math.floor(delta/86400000),Math.floor(delta/3600000)%24,Math.floor(delta/60000)%60,Math.floor(delta/1000)%60];['days','hours','minutes','seconds'].forEach((id,i)=>document.getElementById(id).textContent=String(values[i]).padStart(2,'0'))}tick();setInterval(tick,1000);
