@@ -10,12 +10,28 @@ function resetToHome() {
 resetToHome();
 window.addEventListener('pageshow', resetToHome);
 
+const music=document.getElementById('wedding-audio');
+const musicToggle=document.querySelector('.music-toggle');
+function syncMusicToggle(){
+  const playing=!music.paused;
+  musicToggle.classList.toggle('is-playing',playing);
+  musicToggle.setAttribute('aria-pressed',String(playing));
+  musicToggle.setAttribute('aria-label',playing?'Mute music':'Play music');
+}
+function startMusic(){
+  musicToggle.hidden=false;
+  music.play().catch(()=>{});
+}
+music.addEventListener('play',syncMusicToggle);
+music.addEventListener('pause',syncMusicToggle);
+musicToggle.addEventListener('click',()=>{music.paused?music.play().catch(()=>{}):music.pause()});
 const landingScreen=document.querySelector('.landing-screen');
 const landingOpenButton=landingScreen.querySelector('.landing-open');
 function openLanding(){
   if(landingScreen.classList.contains('is-opening'))return;
   window.clearTimeout(landingAutoOpenTimer);
   landingScreen.classList.add('is-opening');
+  startMusic();
   const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   window.setTimeout(()=>{
     document.querySelector('.hero').classList.add('is-revealing');
