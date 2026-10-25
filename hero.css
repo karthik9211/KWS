@@ -1563,7 +1563,7 @@ body.landing-active {
     flex: 0 0 auto;
     margin-top: -8px;
     font-size: clamp(11px, 3.5vw, 14px);
-    transform: none;
+    transform: translateY(14px);
   }
 
   .hero-auspicious-deity {
