@@ -39,7 +39,10 @@ musicToggle.addEventListener('click',()=>{
   if(musicMuted)music.pause();else music.play().catch(()=>{});
   syncMusicToggle();
 });
-syncMusicToggle();const landingScreen=document.querySelector('.landing-screen');
+syncMusicToggle();
+musicToggle.hidden=false;
+music.play().catch(()=>{});
+const landingScreen=document.querySelector('.landing-screen');
 const landingOpenButton=landingScreen.querySelector('.landing-open');
 function openLanding(){
   if(landingScreen.classList.contains('is-opening'))return;
