@@ -40,8 +40,6 @@ musicToggle.addEventListener('click',()=>{
   syncMusicToggle();
 });
 syncMusicToggle();
-musicToggle.hidden=false;
-music.play().catch(()=>{});
 const landingScreen=document.querySelector('.landing-screen');
 const landingOpenButton=landingScreen.querySelector('.landing-open');
 function openLanding(){
