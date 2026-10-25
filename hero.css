@@ -1769,3 +1769,6 @@ body.landing-active {
 .music-toggle{position:fixed;right:14px;bottom:14px;z-index:60;width:44px;height:44px;border:1px solid #b7802d;border-radius:50%;background:#fff7eb;color:var(--wine);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgb(75 30 33 / 25%)}
 .music-toggle[hidden]{display:none}
 .music-toggle.is-muted::after{content:'';position:absolute;left:9px;right:9px;top:50%;height:2px;background:var(--wine);transform:rotate(-40deg)}
+.music-toggle.needs-tap{animation:music-pulse 1.2s ease-out infinite}
+.music-toggle.needs-tap::before{content:'Tap anywhere for music';position:absolute;right:54px;top:50%;transform:translateY(-50%);white-space:nowrap;padding:6px 10px;border-radius:14px;background:var(--wine);color:#fff7eb;font:600 12px/1 sans-serif}
+@keyframes music-pulse{0%{box-shadow:0 0 0 0 rgb(183 128 45 / 60%)}100%{box-shadow:0 0 0 16px rgb(183 128 45 / 0%)}}
